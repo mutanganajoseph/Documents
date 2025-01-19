@@ -1,0 +1,31 @@
+Navigate to your project folder (create if necessary):
+
+bash
+Copy code
+cd ~/PycharmProjects/myproject
+Create a new Django project:
+
+bash
+Copy code
+django-admin startproject myproject .
+Run the Django development server:
+
+bash
+Copy code
+python manage.py runserver
+Create a new app:
+
+bash
+Copy code
+python manage.py startapp myFirstApp
+Add the app to INSTALLED_APPS in settings.py:
+
+python
+Copy code
+INSTALLED_APPS = ['myFirstApp', ...]
+Make and apply migrations (if you have models):
+
+bash
+Copy code
+python manage.py makemigrations
+python manage.py migrate

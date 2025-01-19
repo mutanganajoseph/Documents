@@ -1,0 +1,14 @@
+
+Format in Fat
+
+sudo umount /dev/sda
+sudo mkfs.vfat -I /dev/sda
+
+
+Format exFat
+
+
+sudo umount /dev/sda
+sudo apt install exfatprogs
+sudo mkfs.exfat /dev/sda
+

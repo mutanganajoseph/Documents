@@ -1,0 +1,75 @@
+mysql -u root -p
+
+alter user 'root'@'localhost'
+identified by 'new_password';
+flush privileges;
+exit
+
+In case you've forgotten the root password
+
+If you've forgotten the root password and cannot log in, you will need to reset the password by following these steps:
+
+1. Stop MySQL service
+
+sudo systemctl stop mysql
+
+2. Start MySQL in Safe Mode (skip grant tables)
+
+This allows you to log in without needing a password.
+
+sudo mysqld_safe --skip-grant-tables &
+
+This will start MySQL in a mode where authentication is disabled.
+
+3. Log in to MySQL
+
+Now, log in to MySQL without a password:
+
+mysql -u root
+
+4. Change the root password
+After logging in, run the following command to update the password:
+
+USE mysql;
+UPDATE user SET authentication_string=PASSWORD('new_password') WHERE User='root';
+FLUSH PRIVILEGES;
+
+5. Restart MySQL service
+
+Exit MySQL and restart the MySQL service to apply the changes:
+
+sudo systemctl start mysql
+
+You should now be able to log in using the new root password.
+
+
+---
+
+Setting a password for other users
+
+To set or change the password for a non-root MySQL user:
+
+1. Log in to MySQL as root or an admin user.
+
+
+2. Use the following SQL command:
+
+
+
+ALTER USER 'username'@'hostname' IDENTIFIED BY 'new_password';
+
+Replace 'username', 'hostname', and 'new_password' with the actual username, host (usually 'localhost'), and desired new password.
+
+3. Flush privileges:
+
+
+
+FLUSH PRIVILEGES;
+
+4. Exit MySQL:
+
+
+
+EXIT;
+
+

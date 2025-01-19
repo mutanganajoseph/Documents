@@ -1,0 +1,101 @@
+Got it! After formatting your drive, it seems that the label of your drive has changed to **MUTANGANA3**. This can happen depending on how the drive was formatted or labeled during the process.
+
+Now that you've formatted the drive, it’s important to ensure that everything is set up correctly before proceeding to create the bootable USB.
+
+Let’s go through the **steps to correctly set up your drive** and **create the bootable Ubuntu USB** again, using **MUTANGANA3** as the new label for your USB drive.
+
+### **Step-by-Step Guide to Create a Bootable Ubuntu USB (with MUTANGANA3 as the label)**
+
+#### **Step 1: Verify the USB Drive Label**
+Since your drive is now labeled **MUTANGANA3**, you can verify the label and partition details.
+
+1. Run the following to check the label and partitions:
+   ```bash
+   lsblk -f
+   ```
+
+   This will display the file system type, mount points, and labels for all connected drives. Look for something like this:
+
+   ```
+   NAME        FSTYPE LABEL        UUID                                 MOUNTPOINT
+   sda           ext4 MUTANGANA3   1234-5678-ABCD-EFGH  /media/jmutangana/MUTANGANA3
+   ```
+
+   Ensure that your USB drive is labeled correctly (e.g., **MUTANGANA3**) and has the correct partition format (likely **ext4** if you formatted it recently).
+
+#### **Step 2: Unmount the USB Drive**
+Before writing the ISO to the drive, ensure it is **unmounted**. 
+
+1. Run the following command to unmount the USB drive:
+   ```bash
+   sudo umount /dev/sda1
+   ```
+
+   If your USB drive is listed as a different device (e.g., `/dev/sdb1`), replace `/dev/sda1` with the appropriate device name.
+
+#### **Step 3: Write the Ubuntu ISO to the USB Drive Using `dd`**
+Assuming your Ubuntu ISO is located in `/home/jmutangana/Downloads/ubuntu.iso`, and the USB drive is now **MUTANGANA3**, use the `dd` command to write the ISO.
+
+1. Run the following command to write the ISO to the USB drive:
+   ```bash
+   sudo dd if=/home/jmutangana/Downloads/ubuntu.iso of=/dev/sda bs=4M status=progress
+   ```
+
+   - `if=/home/jmutangana/Downloads/ubuntu.iso`: This is the path to your Ubuntu ISO.
+   - `of=/dev/sda`: This is the device name for your USB drive (**not a partition**, so we use `/dev/sda`, **not** `/dev/sda1`).
+   - `bs=4M`: The block size, which speeds up the process.
+   - `status=progress`: This shows the progress while `dd` works.
+
+2. **Important**: Double-check the device name (e.g., `/dev/sda` or `/dev/sdb`) to avoid overwriting the wrong drive.
+
+#### **Step 4: Wait for the `dd` Command to Finish**
+The `dd` command will take some time depending on the size of the ISO file and the write speed of your USB drive. Wait for the process to complete. The command line prompt will return when it's done.
+
+#### **Step 5: Synchronize the Write Operation**
+Once the `dd` command finishes writing, it’s good practice to sync the data to ensure everything is written to the drive.
+
+Run:
+```bash
+sync
+```
+
+This will ensure all cached data is written to the USB drive before you remove it.
+
+#### **Step 6: Safely Eject the USB Drive**
+After the write process is complete and synchronized, safely eject the USB drive:
+
+1. Run the following to unmount the drive:
+   ```bash
+   sudo umount /dev/sda
+   ```
+
+2. Or, you can eject it using your file manager, or from the terminal:
+   ```bash
+   sudo eject /dev/sda
+   ```
+
+#### **Step 7: Boot from the USB Drive**
+Now, your USB drive should be bootable with the Ubuntu installation.
+
+1. Insert the USB drive into the computer where you want to install Ubuntu.
+2. Reboot the computer and access the **boot menu** (typically by pressing **F12**, **ESC**, **F2**, or **DEL** on startup, depending on the manufacturer).
+3. From the boot menu, select **USB** as the boot device.
+4. You should see the Ubuntu installer or live session options.
+
+---
+
+### **Summary of Steps (with MUTANGANA3 as your drive label)**:
+
+1. **Identify the USB drive** with `lsblk -f` to ensure it is labeled **MUTANGANA3**.
+2. **Unmount** the USB drive with `sudo umount /dev/sda1` (or the correct partition).
+3. **Write the Ubuntu ISO** to the USB drive with:
+   ```bash
+   sudo dd if=/home/jmutangana/Downloads/ubuntu.iso of=/dev/sda bs=4M status=progress
+   ```
+4. **Run `sync`** to ensure all data is written.
+5. **Safely eject** the USB drive with `sudo umount /dev/sda`.
+6. **Boot from the USB drive** to install or try Ubuntu.
+
+---
+
+Let me know if you run into any issues, or if you need further clarification!

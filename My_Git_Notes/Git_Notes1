@@ -1,0 +1,82 @@
+Linking your GitHub account to your PC involves setting up Git and configuring SSH keys for secure authentication. Here are the steps to link your GitHub account on your PC:
+
+### 1. Install Git
+First, ensure that Git is installed on your PC. You can download it from [git-scm.com](https://git-scm.com/downloads) and follow the installation instructions for your operating system.
+
+### 2. Configure Git
+Once Git is installed, you need to configure your Git username and email. Open your terminal (or Git Bash on Windows) and run the following commands:
+
+```sh
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+```
+
+### 3. Generate SSH Key
+Next, you need to generate an SSH key to securely connect to GitHub. In your terminal, run:
+
+```sh
+ssh-keygen -t ed25519 -C "your.email@example.com"
+```
+
+If you're using an older system that doesn't support the `ed25519` algorithm, use:
+
+```sh
+ssh-keygen -t rsa -b 4096 -C "your.email@example.com"
+```
+
+When prompted to "Enter a file in which to save the key," press Enter to accept the default file location. You can also set a passphrase for added security.
+
+### 4. Add SSH Key to SSH Agent
+Start the SSH agent and add your SSH key:
+
+```sh
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+```
+
+If you used the `rsa` algorithm, the command would be:
+
+```sh
+ssh-add ~/.ssh/id_rsa
+```
+
+### 5. Add SSH Key to GitHub
+Copy the SSH key to your clipboard:
+
+```sh
+cat ~/.ssh/id_ed25519.pub
+```
+
+(or `cat ~/.ssh/id_rsa.pub` for RSA)
+
+Select and copy the output.
+
+Then, go to [GitHub](https://github.com) and follow these steps:
+1. Sign in to your GitHub account.
+2. Go to your profile settings.
+3. Click on "SSH and GPG keys" in the sidebar.
+4. Click the "New SSH key" button.
+5. Paste your SSH key into the "Key" field and give it a descriptive title.
+6. Click "Add SSH key."
+
+### 6. Test SSH Connection
+To verify that your PC is properly linked to your GitHub account, run:
+
+```sh
+ssh -T git@github.com
+```
+
+You should see a message like:
+
+```
+Hi your-username! You've successfully authenticated, but GitHub does not provide shell access.
+```
+
+### 7. Clone a Repository
+Now you can clone repositories using SSH. For example:
+
+```sh
+git clone git@github.com:your-username/your-repository.git
+```
+
+That's it! Your GitHub account is now linked to your PC, and you can start working with your repostory.

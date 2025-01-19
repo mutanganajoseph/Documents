@@ -1,0 +1,67 @@
+
+# Set up your Git user information
+git config --global user.name "mutanganajoseph"  # Set your name for commits
+git config --global user.email "josephmutangana65@gmail.com"  # Set your email for commits
+
+# Generate a new SSH key
+ssh-keygen -t rsa -b 4096 -C "josephmutangana65@gmail.com"  # Create an SSH key for authentication
+
+# Start the SSH agent
+eval "$(ssh-agent -s)"  # Start the SSH agent in the background
+
+# Add your SSH key to the SSH agent
+ssh-add ~/.ssh/id_rsa  # Add the generated SSH key to the agent
+
+# Display your SSH public key (copy this to GitHub)
+
+cat ~/.ssh/id_rsa.pub  # Show the public key for use in GitHub
+
+# Test your SSH connection to GitHub
+ssh -T git@github.com  # Verify that you can connect to GitHub
+
+# Clone a repository from GitHub
+git clone https://github.com/mutanganajoseph/repostoryName.git  # Clone a repo to your local machine
+
+# Change directory to the cloned repository
+cd joe01  # Navigate to your repository folder
+
+# Open the current directory in Visual Studio Code
+code .  # Open the current folder in VS Code
+
+# Pull the latest changes from the remote repository
+git pull origin main  # Fetch and merge changes from the remote
+
+# Stage changes to files
+git add example.html example.css ...  # Stage specific files for commit
+git add .  # Stage all modified files
+
+# Commit your changes with a message
+git commit -m "Updated index.html with new header class called proud-word and css"  # Commit with a message
+
+# Push your local commits to the remote repository
+git push origin main  # Upload your commits to GitHub
+
+# Create a new directory for a new repository
+mkdir new-repo-name  # Make a new directory
+cd new-repo-name  # Change into the new directory
+git init  # Initialize a new Git repository
+
+# Stage and commit initial changes
+git add .  # Stage all files in the new repo
+git commit -m "Initial commit"  # Commit your initial changes
+
+# Add a remote repository
+git remote add origin https://github.com/username/new-repo-name.git  # Link your local repo to GitHub
+
+# Push your local commits to the remote repository
+git push -u origin main  # Push commits and set upstream tracking
+
+# Set the remote URL to use SSH
+git remote set-url origin git@github.com:mutanganajoseph/htmls_basics.git  # Change remote to SSH URL
+git remote -v  # Verify the remote URLs
+git push -u origin main  # Push again to the new remote
+
+# View commit history
+git log  # Show the commit history
+git log --oneline  # Show a simplified commit history
+
