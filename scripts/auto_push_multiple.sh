@@ -2,9 +2,9 @@
 
 # Path to your Git repositories
 REPO1="/home/jmutangana/Documents"
-REPO2="/home/jmutangana/Desktop/html_basics"
-REPO3="/home/jmutangana/Desktop/joe01"
-REPO4="/home/jmutangana/Desktop/myProgramingLanguages"
+REPO2="/home/jmutangana/Desktop/html-basics"
+REPO3="/home/jmutangana/Desktop/first-github-deploy"
+REPO4="/home/jmutangana/Desktop/coding-files"
 
 # Function to process each repository
 process_repo() {
