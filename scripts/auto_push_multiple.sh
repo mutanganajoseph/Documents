@@ -1,28 +1,37 @@
 #!/bin/bash
 
-# List of repositories
-REPOSITORIES=(
-  "/home/jmutangana/Documents"
-  "/home/jmutangana/Desktop/html_basics"
-  "/home/jmutangana/Desktop/joe01"
-  "/home/jmutangana/Desktop/myProgramingLanguages"
-)
+# Path to your Git repositories
+REPO1="/home/jmutangana/Documents"
+REPO2="/home/jmutangana/Desktop/html_basics"
+REPO3="/home/jmutangana/Desktop/joe01"
+REPO4="/home/jmutangana/Desktop/myProgramingLanguages"
 
-# Loop through each repository and perform the Git operations
-for REPO_PATH in "${REPOSITORIES[@]}"; do
-  echo "Processing repository: $REPO_PATH"
-  
-  # Navigate to the repository
-  cd "$REPO_PATH" || { echo "Failed to change directory to $REPO_PATH"; continue; }
+# Function to process each repository
+process_repo() {
+    local REPO_PATH=$1
+    echo "Processing repository: $REPO_PATH"
+    
+    cd "$REPO_PATH" || exit
+    
+    # Stage and commit changes
+    git add -A
+    git commit -m "Auto-update: $(date '+%Y-%m-%d %H:%M:%S')"
+    
+    # Push changes to the main branch
+    git push origin main
+    
+    echo "Completed update for repository: $REPO_PATH"
+}
 
-  # Stage all changes
-  git add -A
+# Process all repositories
+process_repo "$REPO1"
+process_repo "$REPO2"
+process_repo "$REPO3"
+process_repo "$REPO4"
 
-  # Commit changes with a timestamp message
-  git commit -m "Auto-update: $(date '+%Y-%m-%d %H:%M:%S')"
+# Get current time
+current_time=$(date '+%Y-%m-%d %H:%M:%S')
 
-  # Push changes to the main branch
-  git push origin main
+# Notify user with current time in message
+notify-send "Cron Job" "The auto-push script has completed at $current_time"
 
-  echo "Completed update for repository: $REPO_PATH"
-done
