@@ -33,5 +33,5 @@ process_repo "$REPO4"
 current_time=$(date '+%Y-%m-%d %H:%M:%S')
 
 # Notify user with current time in message
-notify-send "Cron Job" "The auto-push script has completed at $current_time"
+notify-send "Cron Job" "Hello Mutangana, The auto-push script has completed at $current_time"
 
