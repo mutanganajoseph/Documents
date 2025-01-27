@@ -152,3 +152,38 @@ fatal: could not read Username for 'https://github.com': No such device or addre
 Completed update for repository: /home/jmutangana/Desktop/coding-files
 Cannot autolaunch D-Bus without X11 $DISPLAY
 Processing repository: /home/jmutangana/Documents
+[main 46c6f50] Auto-update: 2025-01-27 13:00:02
+ 7 files changed, 37 insertions(+), 1 deletion(-)
+ create mode 100644 auca/sem-2/intro-to-computer/Lesson 1.pptx
+ create mode 100644 auca/sem-2/intro-to-computer/Lesson 2.pptx
+ create mode 100644 auca/sem-2/study-research-edrom-8113/.~lock.Study and Research Methods Course Syllabus 2024 2025 [JP].docx#
+ delete mode 100644 auca/sem-2/study-research-edrom-8113/.~lock.Study methods presentation .pptx#
+ create mode 100644 auca/sem-2/study-research-edrom-8113/Study and Research Methods Course Syllabus 2024 2025 [JP].docx
+ delete mode 100644 auca/sem-2/study-research-edrom-8113/Study methods presentation .pptx
+To github.com:mutanganajoseph/Documents.git
+   96797b1..46c6f50  main -> main
+Completed update for repository: /home/jmutangana/Documents
+Processing repository: /home/jmutangana/Desktop/html-basics
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+fatal: could not read Username for 'https://github.com': No such device or address
+Completed update for repository: /home/jmutangana/Desktop/html-basics
+Processing repository: /home/jmutangana/Desktop/first-github-deploy
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+fatal: could not read Username for 'https://github.com': No such device or address
+Completed update for repository: /home/jmutangana/Desktop/first-github-deploy
+Processing repository: /home/jmutangana/Desktop/coding-files
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+fatal: could not read Username for 'https://github.com': No such device or address
+Completed update for repository: /home/jmutangana/Desktop/coding-files
+Cannot autolaunch D-Bus without X11 $DISPLAY
