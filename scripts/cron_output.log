@@ -4898,3 +4898,29 @@ fatal: unable to access 'https://github.com/mutanganajoseph/coding-files.git/': 
 Completed update for repository: /home/jmutangana/Desktop/coding-files
 Cannot autolaunch D-Bus without X11 $DISPLAY
 Processing repository: /home/jmutangana/Documents
+[main 9a546c5] Auto-update: 2025-02-08 19:00:01
+ 1 file changed, 1 insertion(+)
+To github.com:mutanganajoseph/Documents.git
+   0c6e7d4..9a546c5  main -> main
+Completed update for repository: /home/jmutangana/Documents
+Processing repository: /home/jmutangana/Desktop/html-basics
+[main a622901] Auto-update: 2025-02-08 19:00:06
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+fatal: could not read Username for 'https://github.com': No such device or address
+Completed update for repository: /home/jmutangana/Desktop/html-basics
+Processing repository: /home/jmutangana/Desktop/first-github-deploy
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+fatal: could not read Username for 'https://github.com': No such device or address
+Completed update for repository: /home/jmutangana/Desktop/first-github-deploy
+Processing repository: /home/jmutangana/Desktop/coding-files
+On branch main
+Your branch is ahead of 'origin/main' by 25 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+fatal: could not read Username for 'https://github.com': No such device or address
+Completed update for repository: /home/jmutangana/Desktop/coding-files
+Cannot autolaunch D-Bus without X11 $DISPLAY
