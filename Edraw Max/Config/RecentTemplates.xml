@@ -1,5 +1,9 @@
 <Galleries>
 <Gallery nameu="Recent Templates" name="Recent Templates">
+<Templates name="Database Model Diagram" nameu="Database Model Diagram" solution="" icon="database\databasemodel.bmp" description="Contains special shapes and setting for creating database model diagrams. Supports IDEF1X and relational notations. " baseon="">
+<Template path="\library\ERD and Database\Entity Relationship.edt"/>
+<Template path="\library\ERD and Database\Object Relationship.edt"/>
+</Templates>
 <Templates name="Chen ERD" nameu="Chen ERD" solution="" icon="database\chenerd.bmp" description="Contains special shapes and setting for creating entity relationship diagrams based on the Chen ERD notation." baseon="">
 <Template path="\library\ERD and Database\Chen ERD.edt"/>
 <Template path="\library\Software\Relationship.edt"/>
