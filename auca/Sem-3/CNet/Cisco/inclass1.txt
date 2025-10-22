@@ -80,6 +80,5 @@ channel-group 1 mode active
 SW1
 
 int range f0/4 - 6
-channel-group 2 mode active
-
+channel-group 1 mode active
 
