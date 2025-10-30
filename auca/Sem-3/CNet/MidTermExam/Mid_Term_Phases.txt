@@ -6,7 +6,7 @@ PHASE1 — HQ-MAIN-ROUTER
 
 enable
 configure terminal
-hostname HQ-MAIN-ROUTER
+hostname 29061-HQ-MAIN-ROUTER
 no ip domain-lookup
 ip domain-name 29061.f25
 username Joseph privilege 15 secret 29061
@@ -33,7 +33,7 @@ PHASE1 — CORE-SWC
 
 enable
 configure terminal
-hostname CORE-SWC
+hostname 29061-CORE-SWC
 no ip domain-lookup
 ip domain-name 29061.f25
 username Joseph privilege 15 secret 29061
@@ -63,7 +63,7 @@ PHASE1 — A-SWC
 
 enable
 configure terminal
-hostname A-SWC
+hostname 29061-A-SWC
 no ip domain-lookup
 ip domain-name 29061.f25
 username Joseph privilege 15 secret 29061
@@ -93,7 +93,7 @@ PHASE1 — B-SWC
 
 enable
 configure terminal
-hostname 29061_B-SWC
+hostname 29061-B-SWC
 no ip domain-lookup
 ip domain-name 29061.f25
 username Joseph privilege 15 secret 29061
@@ -123,7 +123,7 @@ PHASE1 — C-SWC
 
 enable
 configure terminal
-hostname C-SWC
+hostname 29061-C-SWC
 no ip domain-lookup
 ip domain-name 29061.f25
 username Joseph privilege 15 secret 29061
@@ -153,7 +153,7 @@ PHASE1 — SVR-SWC
 
 enable
 configure terminal
-hostname SVR-SWC
+hostname 29061-SVR-SWC
 no ip domain-lookup
 ip domain-name 29061.f25
 username Joseph privilege 15 secret 29061
@@ -183,7 +183,7 @@ PHASE1 — IT-SWC
 
 enable
 configure terminal
-hostname IT-SWC
+hostname 29061-IT-SWC
 no ip domain-lookup
 ip domain-name 29061.f25
 username Joseph privilege 15 secret 29061
@@ -213,7 +213,7 @@ PHASE1 — FIN-SWC
 
 enable
 configure terminal
-hostname FIN-SWC
+hostname 29061-FIN-SWC
 no ip domain-lookup
 ip domain-name 29061.f25
 username Joseph privilege 15 secret 29061
@@ -243,7 +243,7 @@ PHASE1 — ACC-SWC
 
 enable
 configure terminal
-hostname ACC-SWC
+hostname 29061-ACC-SWC
 no ip domain-lookup
 ip domain-name 29061.f25
 username Joseph privilege 15 secret 29061
@@ -273,7 +273,7 @@ PHASE1 — HR-SWC
 
 enable
 configure terminal
-hostname HR-SWC
+hostname 29061-HR-SWC
 no ip domain-lookup
 ip domain-name 29061.f25
 username Joseph privilege 15 secret 29061
@@ -303,7 +303,7 @@ PHASE1 — RISK-SWC
 
 enable
 configure terminal
-hostname RISK-SWC
+hostname 29061-RISK-SWC
 no ip domain-lookup
 ip domain-name 29061.f25
 username Joseph privilege 15 secret 29061
@@ -331,7 +331,7 @@ PHASE1 — TELLER-SWC
 =====================================================================
 enable
 configure terminal
-hostname TELLER-SWC
+hostname 29061-TELLER-SWC
 no ip domain-lookup
 ip domain-name 29061.f25
 username Joseph privilege 15 secret 29061
@@ -375,7 +375,7 @@ interface GigabitEthernet0/0
  no shutdown
  exit
 
-interface GigabitEthernet0/0.1
+interface GigabitEthernet1/0.1
  encapsulation dot1Q 1
  ip address 192.168.100.97 255.255.255.240
  exit
@@ -905,7 +905,7 @@ DEVICE: TELLER-SWC
 ------------------------------------------------------
 interface GigabitEthernet0/1
  switchport mode trunk
- switchport trunk allowed vlan 60
+ switchport trunk allowed vlan 10,20,30,40,50,60
  no shutdown
 
 spanning-tree mode rapid-pvst
@@ -1021,6 +1021,11 @@ DEVICE: IT-SWC (access: IT PCs + shutdown unused)
 
 ! IT access ports 
 ------------------------------------------------------
+conf t
+spanning-tree portfast default
+spanning-tree bpduguard default
+exit
+
 interface FastEthernet0/24
  switchport mode trunk
  switchport trunk allowed vlan 10,20,30,40,50,60
@@ -1082,6 +1087,11 @@ interface range FastEthernet0/8 - 23
 ------------------------------------------------------
 DEVICE: FIN-SWC (access: FIN PCs + shutdown unused)
 ------------------------------------------------------
+conf t
+spanning-tree portfast default
+spanning-tree bpduguard default
+exit
+
 interface FastEthernet0/20
  switchport mode trunk
  switchport trunk allowed vlan 10,20,30,40,50,60
@@ -1129,7 +1139,7 @@ switchport mode access
 
 interface FastEthernet0/13
 switchport mode access
- switchport access vlan 30
+ switchport access vlan 40
  switchport port-security
  switchport port-security maximum 1
  switchport port-security violation shutdown
@@ -1155,6 +1165,11 @@ interface range gi0/1-2
 DEVICE: ACC-SWC (access: ACC PCs + shutdown unused)
 ------------------------------------------------------
 conf t
+spanning-tree portfast default
+spanning-tree bpduguard default
+exit
+
+
 interface FastEthernet0/21
  switchport mode trunk
  switchport trunk allowed vlan 10,20,30,40,50
@@ -1228,6 +1243,11 @@ interface range gi0/1-2
 DEVICE: HR-SWC
 ------------------------------------------------------
 conf t
+spanning-tree portfast default
+spanning-tree bpduguard default
+exit
+
+
 interface FastEthernet0/20
  switchport mode trunk
  switchport trunk allowed vlan 10,20,30,40,50
@@ -1303,6 +1323,10 @@ write memory
 DEVICE: RISK-SWC
 ------------------------------------------------------
 conf t
+spanning-tree portfast default
+spanning-tree bpduguard default
+exit
+
 interface FastEthernet0/21
  switchport mode trunk
  switchport trunk allowed vlan 10,20,30,40,50
@@ -1380,6 +1404,10 @@ write memory
 ---------------------------------------------------------
 DEVICE: C-SWC
 ---------------------------------------------------------
+conf t
+spanning-tree portfast default
+spanning-tree bpduguard default
+exit
 
 interface GigabitEthernet0/1
  switchport mode trunk
@@ -1395,6 +1423,10 @@ interface GigabitEthernet0/2
 ------------------------------------------------------
 DEVICE: TELLER-SWC
 ------------------------------------------------------
+conf t
+spanning-tree portfast default
+spanning-tree bpduguard default
+exit
 
 interface GigabitEthernet0/1
  switchport mode trunk
@@ -1456,6 +1488,8 @@ switchport mode access
 interface range FastEthernet0/23 - 24
  shutdown
 interface range FastEthernet0/1 - 15
+no switchport mode access
+no switchport access vlan 60
  shutdown
 interface gi0/2
  shutdown
@@ -1463,6 +1497,7 @@ interface gi0/2
 spanning-tree mode rapid-pvst
 end
 write memory
+
 
 ======================================================================
 PHASE 5: Server Configuration & Services
@@ -1593,68 +1628,72 @@ write memory
 PHASE 6 — SECURITY IMPLEMENTATION 
 ===================================================================
 
-HQ-MAIN-ROUTER
-===================================================================
-1. Blocks VLAN 70 from accessing any network
--------------------------------------------------------------------
-
-ip access-list standard Standard_29061_Visitor_Block
- deny 192.168.70.0 0.0.0.15
- permit any
-exit
--------------------------------------------------------------------
-
-Apply inbound on VLAN 70 sub-interface
--------------------------------------------------------------------
-
-interface GigabitEthernet0/0.70
- ip access-group Standard_29061_Visitor_Block in
-
--------------------------------------------------------------------
-
-2. Extended ACL (ALLOW Visitor ONLY HTTP & DNS) ONLY reach WEB-SERVER (HTTP port 80) and AD-DC (DNS port 53)
-
--------------------------------------------------------------------
-
-
 ip access-list extended Extended_29061_Visitor_Access
- permit tcp 192.168.70.0 0.0.0.15 host 192.168.100.100 eq 80
+ remark --- Allow DHCP (Client <-> Server) ---
+ permit udp any any eq 67
+ permit udp any any eq 68
+
+ remark --- Allow DNS to AD-DC server (192.168.80.10) ---
  permit udp 192.168.70.0 0.0.0.15 host 192.168.80.10 eq 53
+ permit tcp 192.168.70.0 0.0.0.15 host 192.168.80.10 eq 53
+
+ remark --- Allow HTTP to Web Server (192.168.100.100) ---
+ permit tcp 192.168.70.0 0.0.0.15 host 192.168.100.100 eq 80
+
+ remark --- Deny all other traffic from VLAN 70 ---
  deny ip 192.168.70.0 0.0.0.15 any
+
+ remark --- Permit everything else (so router services work) ---
+ permit ip any any
 exit
 
--------------------------------------------------------------------
-Apply inbound (same sub-interface)
--------------------------------------------------------------------
-
 interface GigabitEthernet0/0.70
+ no ip access-group Standard_29061_Visitor_Block in
+ no ip access-group Extended_29061_Visitor_Access in
  ip access-group Extended_29061_Visitor_Access in
 
+
+2. Extended ACL (AD-DC SERVER ACCESS) IT-NET full access, others only ping + DNS
+
 -------------------------------------------------------------------
 
-3. Extended ACL (AD-DC SERVER ACCESS) IT-NET full access, others only ping + DNS
+configure terminal
+interface GigabitEthernet1/0.80
+ no ip access-group Extended_29061_ADDC_Access out
+end
 
--------------------------------------------------------------------
+ ! 1) permit net-monitor FIRST
 
+conf t
 ip access-list extended Extended_29061_ADDC_Access
  permit ip any 192.168.90.0 0.0.0.15
  permit ip 192.168.90.0 0.0.0.15 any
+
+
+ ! 2) permit IT full access
+
  permit ip 192.168.10.0 0.0.0.15 host 192.168.80.10
+
+ ! 3) permit limited access for all other VLANs
+
+
  permit icmp any host 192.168.80.10
  permit udp any host 192.168.80.10 eq 53
+
+
+ ! 4) block everything else
+
+
  deny ip any host 192.168.80.10
 exit
 
--------------------------------------------------------------------
-Apply outbound on AD-DC sub-interface
-
--------------------------------------------------------------------
-
 interface GigabitEthernet1/0.80
  ip access-group Extended_29061_ADDC_Access out
+end
+wr
 
 -------------------------------------------------------------------
-4. Extended ACL (CBS SERVER ACCESS) IT-NET full access, others only FTP (20, 21)
+3. Extended ACL (CBS SERVER ACCESS) IT-NET full access, others only FTP (20, 21)
 
 -------------------------------------------------------------------
 
@@ -1674,7 +1713,7 @@ interface GigabitEthernet1/0.80
  ip access-group Extended_29061_CBS_Access out
 
 -------------------------------------------------------------------
-5. Extended ACL (EDWH SERVER ACCESS) ONLY IT-NET allowed
+4. Extended ACL (EDWH SERVER ACCESS) ONLY IT-NET allowed
 -------------------------------------------------------------------
 
 ip access-list extended Extended_29061_EDWH_Access
@@ -1690,9 +1729,3 @@ interface GigabitEthernet1/0.80
 -------------------------------------------------------------------
 
 
-To avoid breaking NTP, SYSLOG, SIEM monitoring:
-
-Add before any denies inside your Extended ACLs:
-
-permit ip any 192.168.90.0 0.0.0.15
-permit ip 192.168.90.0 0.0.0.15 any
